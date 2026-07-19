@@ -1,0 +1,63 @@
+{
+  "@context": [
+    "https://schema.org/",
+    {
+      "etzhayyim": "https://etzhayyim.com/ns/",
+      "isic": "https://unstats.un.org/unsd/classifications/Econ/ISIC/",
+      "isco": "https://www.ilo.org/public/english/bureau/stat/isco/",
+      "adr": "https://etzhayyim.com/ns/adr/"
+    }
+  ],
+  "@type": "Project",
+  "name": "Hospitality — Hotel / OTA Actor Roster & Resource-Flow Emitter",
+  "identifier": "etzhayyim-project-hospitality",
+  "url": "https://hospitality.etzhayyim.com",
+  "description": "Hospitality umbrella project. ADR-0028 Phase 1 pilot. Path-based actor DIDs (chain / OTA / property) emit com.etzhayyim.apps.resourceFlow.legalEntity{Currency,Personnel,Service}Flow to resource-flow.etzhayyim.com. Responsibility split: yadoya = booking, minpaku = OSM collection, hospitality = actor roster + flow emission.",
+  "status": "Scaffold",
+  "dateCreated": "2026-04-15",
+  "etzhayyim:authoritativeAdr": "adr:0028-resource-flow-private-sector-extension",
+  "etzhayyim:dependsOn": [
+    "etzhayyim-project-resource-flow",
+    "etzhayyim-project-yadoya",
+    "etzhayyim-project-minpaku",
+    "etzhayyim-project-legal-entity"
+  ],
+  "etzhayyim:actorCluster": {
+    "chain": {
+      "isicCode": "I5510",
+      "isco": ["1411", "4224", "5113", "5151"],
+      "examples": ["marriott", "hilton", "hyatt", "ihg", "accor", "hoshino", "prince", "apa"]
+    },
+    "ota": {
+      "isicCode": "N7911",
+      "isco": ["5113", "4222"],
+      "examples": ["booking", "expedia", "agoda", "airbnb", "rakuten-travel", "jalan", "ikyu"]
+    },
+    "assoc": {
+      "isicCode": "N7990",
+      "examples": ["unwto", "jnto", "str-global"]
+    },
+    "property": {
+      "isicCode": "I5510",
+      "source": "minpaku:osm-promoted"
+    }
+  },
+  "etzhayyim:emits": [
+    "com.etzhayyim.apps.resourceFlow.legalEntityCurrencyFlow",
+    "com.etzhayyim.apps.resourceFlow.legalEntityPersonnelFlow",
+    "com.etzhayyim.apps.resourceFlow.legalEntityServiceFlow"
+  ],
+  "etzhayyim:piiPolicy": {
+    "tier": 1,
+    "cohortKAnonymity": 5,
+    "individualDidForbidden": true,
+    "authoritativeAdr": "adr:0018-pii-tier3-cohort-first"
+  },
+  "etzhayyim:phaseRoadmap": [
+    { "phase": 0, "scope": "ADR-0028 + lexicon + roster toml", "status": "done", "date": "2026-04-15" },
+    { "phase": 1, "scope": "path-DID registration script", "status": "pending" },
+    { "phase": 2, "scope": "IR/EDGAR/EDINET scheduled collector", "status": "pending" },
+    { "phase": 3, "scope": "resource-flow Worker onCommit handler + sankey", "status": "pending" },
+    { "phase": 4, "scope": "remaining 9 class lexicons", "status": "pending" }
+  ]
+}
