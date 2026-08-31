@@ -1,0 +1,5 @@
+# Installing kotoba/ dependencies must not leave a committable tree.
+# `git status` reported kotoba/node_modules/ as untracked before this file existed.
+node_modules/
+npm-debug.log*
+.DS_Store
