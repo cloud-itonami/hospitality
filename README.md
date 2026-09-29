@@ -20,7 +20,7 @@ catalogue, or moves money.
 
 Actors are **promoted** from the yadoya catalogue and the minpaku OSM set; this
 repo does not collect them itself. Keeping that boundary is the point of the
-split — see `CLAUDE.md` for the full responsibility table.
+split — see `AGENTS.md` for the full responsibility table.
 
 ## What is actually in here
 
